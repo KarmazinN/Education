@@ -1,0 +1,17 @@
+services:
+  education.api:
+    image: ${DOCKER_REGISTRY-}educationapi
+    build:
+      context: .
+      dockerfile: Education.Api/Dockerfile
+
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: EducationDb
+      MYSQL_USER: mysql_user
+      MYSQL_PASSWORD: mysql_password
+    ports:
+      - "3306:3306"
